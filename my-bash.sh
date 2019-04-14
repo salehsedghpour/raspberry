@@ -1,3 +1,3 @@
 #!/bin/bash
 echo synching with git.
-git pull origin master
+(cd /home/mohammad/codes/ ;git pull origin master)
