@@ -4,5 +4,5 @@ echo synching with git.
 (sudo -s ; apt install python3-pip)
 /usr/bin/pip3 install requests
 
-echo { "zone":1, "user":"vahid","mongo-user":"my-mongo-user", "mongo-password":"NGEyY2IwZWQ5OGM1", "mongo-url":"mon.hcsone.net:27017/" } > /opt/auth.json
+echo { "zone":1, "user":"me","mongo-user":"my-mongo-user", "mongo-password":"NGEyY2IwZWQ5OGM1", "mongo-url":"mon.hcsone.net:27017/" } > /opt/auth.json
 
