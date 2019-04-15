@@ -50,4 +50,6 @@ obj = json.loads(data)
 #for item in get_miners_list():
 #    data = get_data_from_miner(item)
 data = []
-send_log_to_mongo(obj['user'],obj['zone'],obj['mongo-user'],obj['mongo-password'],obj['mongo-url'],data,item[3])
+#send_log_to_mongo(obj['user'],obj['zone'],obj['mongo-user'],obj['mongo-password'],obj['mongo-url'],data,item[3])
+send_log_to_mongo('vahid',2,'my-mongo-user','NGEyY2IwZWQ5OGM1','mon.hcsone.net:21117',data,3)
+
