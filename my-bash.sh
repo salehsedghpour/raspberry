@@ -5,4 +5,4 @@ echo synching with git.
 #/usr/bin/pip3 install requests
 
 #echo { "zone":1, "user":"me","mongo-user":"my-mongo-user", "mongo-password":"NGEyY2IwZWQ5OGM1", "mongo-url":"mon.hcsone.net:2717/" } > /opt/auth.json
-/usr/bin/python /opt/send_log.py
+/usr/bin/python /opt/codes/send_log.py
