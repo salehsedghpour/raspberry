@@ -53,5 +53,5 @@ for item in get_miners_list():
 #item = ['192.168.1.56','root','root']
     data = get_data_from_miner(item)
 #data = []
-    if data != '':
+    if data != None:
         send_log_to_mongo(obj['user'],obj['zone'],obj['mongo-user'],obj['mongo-password'],obj['mongo-url'],data,item[3])
