@@ -43,14 +43,14 @@ def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
         print("There is some error in sending data to miner")
 
 
-#with open('/opt/auth.json', 'r') as myfile:
-#    data=myfile.read()
+with open('/opt/auth.json', 'r') as myfile:
+    data=myfile.read()
 
 # parse file
-#obj = json.loads(data)
+obj = json.loads(data)
 
-#for item in get_miners_list():
-item = ['192.168.1.56','root','root']
-data = get_data_from_miner(item)
+for item in get_miners_list():
+#item = ['192.168.1.56','root','root']
+    data = get_data_from_miner(item)
 #data = []
-send_log_to_mongo("vahid",1,'my-mongo-user','NGEyY2IwZWQ5OGM1','mon.hcsone.net:27117/',data,15)
+    send_log_to_mongo("vahid",1,'my-mongo-user','NGEyY2IwZWQ5OGM1','mon.hcsone.net:27117/',data,15)
