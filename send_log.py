@@ -36,7 +36,7 @@ def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
         mydict = {"username" : user,
         "zone_id" : zone,
         "miner_id" : int(miner_id),
-        "timestamp" : time.time(),
+        "timestamp" : time.time()+16200,
         "log" :data}
         x = mycol.insert_one(mydict)
     except:
