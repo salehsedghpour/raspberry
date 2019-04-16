@@ -1,7 +1,7 @@
 #import sqlite3,requests,pymongo,json,time
 #from requests.auth import HTTPDigestAuth
 #local_db_name = '/opt/miner.db'
-import pymongo,time
+import pymongo
 
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
     try:
@@ -11,7 +11,7 @@ def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
         mydict = {"username" : 'vahid',
         "zone_id" : 1,
         "miner_id" : 1,
-        "timestamp" : time.time()}
+        "timestamp" : 879878798}
         #"log" :data}
         x = mycol.insert_one(mydict)
     except:
