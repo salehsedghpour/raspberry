@@ -11,7 +11,7 @@ def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
         mydict = {"username" : 'vahid',
         "zone_id" : 1,
         "miner_id" : 1,
-        "timestamp" : 11111}
+        "timestamp" : "new_data_from rasp"}
         #"log" :data}
         x = mycol.insert_one(mydict)
     except:
