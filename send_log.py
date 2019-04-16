@@ -1,32 +1,52 @@
-#import sqlite3,requests,pymongo,json,time
-#from requests.auth import HTTPDigestAuth
-#local_db_name = '/opt/miner.db'
-import pymongo
+import sqlite3,requests,pymongo,json,time
+from requests.auth import HTTPDigestAuth
+local_db_name = '/opt/miner.db'
+
+
+def get_miners_list():
+    try:
+        conn = sqlite3.connect(local_db_name)
+        c = conn.cursor()
+        c.execute("SELECT ip,user,pass,miner_id FROM miners")
+        out = []
+        for item in c.fetchall():
+            out.append(item)
+        return out
+    except:
+        print("There is some Error in getting data from sqlite")
+
+def get_data_from_miner(ip):
+    try:
+        url = "/cgi-bin/get_miner_status.cgi"
+        my_url = "https://jigsaw.w3.org/HTTP/Digest/"
+        #r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
+        r =requests.get("http://"+ip[0]+url, auth=HTTPDigestAuth(ip[1], ip[2]))
+        out_put = r.json
+        return out_put
+    except:
+        print("there is some error in getting data from miner.")
 
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
     try:
         myclient = pymongo.MongoClient("mongodb://" + mongo_user + ":" + mongo_pass + "@" + mongo_url)
         mydb = myclient["monitoring"]
-        mycol = mydb['vahid']
-        mydict = {"username" : 'vahid',
-        "zone_id" : 1,
-        "miner_id" : 1,
-        "timestamp" : "new_data_from rasp"}
-        #"log" :data}
+        mycol = mydb[user]
+        mydict = {"username" : user,
+        "zone_id" : zone,
+        "miner_id" : int(miner_id),
+        "timestamp" : time.time(),
+        "log" :data}
         x = mycol.insert_one(mydict)
     except:
         print("There is some error in sending data to miner")
 
 
-#with open('/opt/auth.json', 'r') as myfile:
-#    data=myfile.read()
+with open('/opt/auth.json', 'r') as myfile:
+    data=myfile.read()
 
 # parse file
-#obj = json.loads(data)
+obj = json.loads(data)
 
-#for item in get_miners_list():
-#    data = get_data_from_miner(item)
-data = []
-#send_log_to_mongo(obj['user'],obj['zone'],obj['mongo-user'],obj['mongo-password'],obj['mongo-url'],data,item[3])
-send_log_to_mongo('vahid',2,'my-mongo-user','NGEyY2IwZWQ5OGM1','92.61.178.28:27117/',data,3)
-
+for item in get_miners_list():
+    data = get_data_from_miner(item)
+    send_log_to_mongo(obj['user'],obj['zone'],obj['mongo-user'],obj['mongo-password'],obj['mongo-url'],data,item[3])
