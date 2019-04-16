@@ -23,7 +23,8 @@ def get_data_from_miner(ip):
         r =requests.get("http://"+ip[0]+url, auth=HTTPDigestAuth(ip[1], ip[2]))
         #r.content.
         out_put = r.content.decode('utf8')
-        return out_put
+        out = json.loads(out_put)
+        return out
     except:
         print("there is some error in getting data from miner.")
 
