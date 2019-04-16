@@ -1,7 +1,7 @@
 #!/bin/bash
 echo synching with git.
 (cd /opt/codes/ ;git pull origin master)
-(sudo -s ;timedatectl set-timezone Asia/Tehran)
+#(sudo -s ;timedatectl set-timezone Asia/Tehran)
 #(sudo -s ; apt install python3-pip)
 #(sudo -s ; rm /opt/miner.db)
 #pip3 install requests
