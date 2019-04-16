@@ -21,7 +21,8 @@ def get_data_from_miner(ip):
         my_url = "https://jigsaw.w3.org/HTTP/Digest/"
         r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
         #r =requests.get("http://"+ip[0]+url, auth=HTTPDigestAuth(ip[1], ip[2]))
-        out_put = r.content
+        #r.content.
+        out_put = r.content.decode('utf8')
         return out_put
     except:
         print("there is some error in getting data from miner.")
