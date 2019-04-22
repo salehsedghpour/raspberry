@@ -25,7 +25,7 @@ def get_data_from_miner(ip):
         out = json.loads(out_put)
         return out
     except:
-        error = ["there is some error in getting data from miner."]
+        error = ["there is some error in getting data from miner. 151"]
         print(error[0])
         return error
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
@@ -50,7 +50,7 @@ with open('/opt/auth.json', 'r') as myfile:
 obj = json.loads(data)
 
 #for item in get_miners_list():
-item = ['192.168.1.177','root','root']
+item = ['192.168.1.151','root','root']
 data = get_data_from_miner(item)
 #data = []
 if data != None:
