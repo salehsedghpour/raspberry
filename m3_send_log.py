@@ -19,13 +19,13 @@ def get_data_from_miner(ip):
         url = "/cgi-bin/luci/admin/status/cgminerstatus"
         my_url = "https://jigsaw.w3.org/HTTP/Digest/"
         #r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
-        r =requests.get("http://"+ip[0]+url, auth=HTTPBasicAuth(ip[1], ip[2]))
+        r =requests.get("http://"+ip[0]+url)
         #r.content.
-        out_put = r.content.decode('utf8')
-        out = json.loads(out_put)
+        out_put = r.headers
+        out = [out_put]
         return out
     except:
-        error = ["there is some error in getting data from miner."]
+        error = ["there is some error in getting data from miner.test"]
         print(error[0])
         return error
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
