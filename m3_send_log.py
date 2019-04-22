@@ -25,7 +25,7 @@ def get_data_from_miner(ip):
         out = [out_put]
         return out
     except:
-        error = ["there is some error in getting data from miner. 151"]
+        error = ["there is some error in getting data from miner."]
         print(error[0])
         return error
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
