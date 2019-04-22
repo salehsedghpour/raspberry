@@ -15,7 +15,7 @@ def get_miners_list():
         print("There is some Error in getting data from sqlite")
 
 def get_data_from_miner(ip):
-    #try:
+    try:
         url = "/cgi-bin/luci/admin/status/cgminerstatus"
         my_url = "https://jigsaw.w3.org/HTTP/Digest/"
         #r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
@@ -24,9 +24,10 @@ def get_data_from_miner(ip):
         out_put = r.content.decode('utf8')
         out = json.loads(out_put)
         return out
-    #except:
-    #    print("there is some error in getting data from miner.")
-
+    except:
+        error = ["there is some error in getting data from miner."]
+        print(error[0])
+        return error
 def send_log_to_mongo(user,zone,mongo_user,mongo_pass,mongo_url,data,miner_id):
     try:
         myclient = pymongo.MongoClient("mongodb://" + mongo_user + ":" + mongo_pass + "@" + mongo_url)
