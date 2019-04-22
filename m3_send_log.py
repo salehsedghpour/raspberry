@@ -1,5 +1,5 @@
 import sqlite3,requests,pymongo,json,time
-from requests.auth import HTTPDigestAuth
+from requests.auth import HTTPBasicAuth
 local_db_name = '/opt/miner.db'
 
 def get_miners_list():
@@ -19,10 +19,10 @@ def get_data_from_miner(ip):
         url = "/cgi-bin/luci/admin/status/cgminerstatus"
         my_url = "https://jigsaw.w3.org/HTTP/Digest/"
         #r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
-        r =requests.get("http://"+ip[0]+url, auth=HTTPDigestAuth(ip[1], ip[2]))
+        r =requests.get("http://"+ip[0]+url, auth=HTTPBasicAuth(ip[1], ip[2]))
         #r.content.
         out_put = r.content.decode('utf8')
-        out = [out_put]
+        out = json.loads(out_put)
         return out
     except:
         error = ["there is some error in getting data from miner."]
