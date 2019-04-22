@@ -21,7 +21,7 @@ def get_data_from_miner(ip):
         #r= requests.get(my_url,auth=HTTPDigestAuth("guest","guest"))
         r =requests.get("http://"+ip[0]+url)
         #r.content.
-        out_put = r.headers
+        out_put = r.status_code
         out = [out_put]
         return out
     except:
